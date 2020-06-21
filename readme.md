@@ -9,3 +9,4 @@
 - testcases 存放测试用例
 - common  存放常用的工具模块
 - sdk    主要封装requests请求业务逻辑
+- logs   存放日志文件
