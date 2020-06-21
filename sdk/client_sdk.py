@@ -4,10 +4,9 @@
 2. 添加异常处理
 """
 import requests
-import logging
 
-# 默认级别为warring 修改打印级别    使用filename方法记录日志到文件
-logging.basicConfig(filename='example.log', level=logging.DEBUG)   # filename 文件会建在当前目录下
+from common.logger import logger  # 调用自定义日志
+
 
 class ClientSDK:  # 建类
 
@@ -32,15 +31,18 @@ class ClientSDK:  # 建类
 
         url = self.base_url+url
         # 手动print日志
-        logging.debug(f'{method}请求  请求路径：{url}---{desc}')
+        logger.info(f'{method}请求  请求路径：{url}---{desc}')
         if method == "get":
            res = requests.get(url, params=params, **kwargs)
            # 手动print状态码
-           logging.debug(f'get请求数据:{params}---状态码：{res.status_code} ')
+           logger.info(f'get请求数据:{params}---状态码：{res.status_code} ')
+           return res
+
         elif method == 'post':
             res = requests.post(url, data=data, **kwargs)
             # 手动print状态码
-            logging.debug(f'post请求数据:{data}---状态码：{res.status_code} ')
+            logger.info(f'post请求数据:{data}---状态码：{res.status_code} ')
+            return res
 
 if __name__ == '__main__':
     sdk = ClientSDK()
