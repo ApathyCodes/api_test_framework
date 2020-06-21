@@ -34,22 +34,34 @@ test_data1 = {
         "tab": "ask",
         "content": "发布话题测试"
     }
+
+test_data1_expect = {
+    "expect_status_code": 401,
+    "expect_error_msg": "错误的accessToken"
+}
+
 test_data2 = {
         "accesstoken": "c1647158-1d48-4977-86c8-a0a4b0d5603f",
         "title": "",
         "tab": "ask",
         "content": "发布话题测试"
     }
-@pytest.mark.parametrize("test_data", [test_data1, test_data2])
-def test_topics_failed(test_data):
+
+test_data2_expect={
+    "expect_status_code": 400,
+    "expect_error_msg": "标题不能为空"
+}
+
+@pytest.mark.parametrize("test_data, expect_data", [(test_data1, test_data1_expect), (test_data2, test_data2_expect)])
+def test_topics_failed(test_data, expect_data):
 
     res = sdk.do_requests('post', '/topics', desc='新建主题', data=test_data)
     jsonData = res.json()
     logger.debug(f'运行结果：{jsonData}')
 
-    # assert res.status_code == 401
-    # jsonData = res.json()
-    # assert jsonData['error_msg'] == "错误的accessToken"
+    assert res.status_code == expect_data["expect_status_code"]
+    jsonData = res.json()
+    assert jsonData['error_msg'] == expect_data["expect_error_msg"]
     #
     # res = sdk.do_requests('post', '/topics', desc='新建主题', data=test_data)
     # assert res.status_code == 400
