@@ -38,7 +38,7 @@ class ClientSDK:  # 建类
            logger.info(f'get请求数据:{params}---状态码：{res.status_code} ')
            return res
 
-        elif method == 'post':
+        elif method == "post":
             res = requests.post(url, data=data, **kwargs)
             # 手动print状态码
             logger.info(f'post请求数据:{data}---状态码：{res.status_code} ')
