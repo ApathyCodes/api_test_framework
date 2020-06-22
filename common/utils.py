@@ -47,6 +47,9 @@ class FileHandler():
         return lists
 
 
+if __name__ == '__main__':
+    fh = FileHandler()
+    fh.do_Excel('testdata.xlsx','Sheet1')
 
 
 

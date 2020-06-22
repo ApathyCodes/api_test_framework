@@ -11,7 +11,7 @@ def test_create_topic():
         "tab": "ask",
         "content": "发布话题测试"
     }
-    res = sdk.do_requests('post', '/topics', desc='新建主题', data=test_data)
+    res = sdk.do_request('post', '/topics', desc='新建主题', data=test_data)
     print(res)
 
     assert res.status_code == 200
@@ -55,7 +55,7 @@ test_data2_expect={
 @pytest.mark.parametrize("test_data, expect_data", [(test_data1, test_data1_expect), (test_data2, test_data2_expect)])
 def test_topics_failed(test_data, expect_data):
 
-    res = sdk.do_requests('post', '/topics', desc='新建主题', data=test_data)
+    res = sdk.do_request('post', '/topics', desc='新建主题', data=test_data)
     jsonData = res.json()
     logger.debug(f'运行结果：{jsonData}')
 

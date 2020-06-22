@@ -16,7 +16,7 @@ class ClientSDK:  # 建类
         self.base_url = 'http://49.233.108.117:3000/api/v1'  # 设置api 前置路径
 
     # 定义方法方便调用，统一处理中心
-    def do_requests(self, method: str, url: str, desc=None, params=None, data=None, **kwargs):
+    def do_request(self, method: str, url: str, desc=None, params=None, data=None, **kwargs):
 
         """
         统一封装请求处理方法
@@ -46,5 +46,5 @@ class ClientSDK:  # 建类
 
 if __name__ == '__main__':
     sdk = ClientSDK()
-    sdk.do_requests('get', '/topics', '主题首页')
-    sdk.do_requests('post', '/topics', '新建主题')
+    sdk.do_request('get', '/topics', '主题首页')
+    sdk.do_request('post', '/topics', '新建主题')
