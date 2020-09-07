@@ -4,7 +4,6 @@
 import logging
 import os
 
-
 # 将所有的日志文件统一放到 logging 目录  做路径拼接 (当前在common目录下logger文件)
 BaseDir = os.path.dirname(os.path.dirname(__file__))   # 获取项目根目录
 
@@ -13,17 +12,6 @@ logsDir = os.path.join(BaseDir, 'logs')   # 设置logs所在目录
 # 设置log 文件于logs目录下
 log_file = os.path.join(logsDir, 'example.log')
 
-
-"""
-废弃代码:
-# 定义logger对象实例化 指定logger_name
-logger = logging.getLogger('apitest')
-# 设置日志级别
-logger.setLevel(logging.DEBUG)
-
-frm = logging.Formatter('%(asctime)s %(message)s')
-logging.StreamHandler()
-"""
 # 创建logger 对象名
 logger = logging.getLogger('CondeApiTest')
 logger.setLevel(logging.DEBUG)
