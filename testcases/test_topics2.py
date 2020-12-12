@@ -30,8 +30,8 @@ def test_create_topic(id, desc, method, url, data, expect_val, code):
             assert res.status_code == code
             assert jsonData == json.loads(expect_val)
 
-    except Exception:
-        logger.error("运行失败")
+    except Exception as e:
+        logger.error(f"运行失败:{e}")
         raise Exception  # 抛出异常
     logger.info("用例运行通过")
 

@@ -3,14 +3,16 @@
 """
 import logging
 import os
+import time
 
 # 将所有的日志文件统一放到 logging 目录  做路径拼接 (当前在common目录下logger文件)
 BaseDir = os.path.dirname(os.path.dirname(__file__))   # 获取项目根目录
 
 logsDir = os.path.join(BaseDir, 'logs')   # 设置logs所在目录
 
+today = time.strftime("%Y_%m_%d", time.gmtime())
 # 设置log 文件于logs目录下
-log_file = os.path.join(logsDir, 'example.log')
+log_file = os.path.join(logsDir, today + '.log')
 
 # 创建logger 对象名
 logger = logging.getLogger('CondeApiTest')
